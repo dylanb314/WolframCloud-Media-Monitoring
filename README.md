@@ -2,6 +2,8 @@
 
 A system for monitoring media mentions of specific key words/phrases using the [Webhose.io](https://webhose.io) API and deployed to the [Wolfram Cloud](https://www.wolframcloud.com).
 
+[![View notebooks](https://wolfr.am/HAAhzkRq)](https://wolfr.am/HF7CBvPF)
+
 ## Setup
 
 To set this up, simply make a copy of `config.wl.template` and fill it out with your relevant information, i.e. desired cloud, username/password, webhose token, etc.
