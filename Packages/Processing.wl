@@ -8,11 +8,11 @@ ProcessData[config_, date_DateObject] :=
     Module[{configData, term, raw, final, rawData, sorted},
         configData = Get[config];
         term = Lookup[configData, "term"];
-        raw = StringTemplate[Lookup[configData, "path-template"]][term, "raw", DateString[start, {"Year","-","Month","-","Day"}]];
-        final = StringTemplate[Lookup[configData, "path-template"]][term, "final", DateString[start, {"Year","-","Month","-","Day"}]];
+        raw = StringTemplate[Lookup[configData, "path-template"]][term, "raw", DateString[date, {"Year","-","Month","-","Day"}]];
+        final = StringTemplate[Lookup[configData, "path-template"]][term, "final", DateString[date, {"Year","-","Month","-","Day"}]];
         rawData = CloudImport[raw];
         sorted = DataFormatting[rawData, term];
-        CloudExport[sorted, "WDX", final]
+        CloudExport[sorted, "MX", final]
     ]
 ProcessData[___] := $Failed
 

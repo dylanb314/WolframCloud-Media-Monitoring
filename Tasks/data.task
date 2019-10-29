@@ -1,0 +1,8 @@
+ScheduledTask[
+    Module[{},
+        Get[FileNameJoin[{"`root`", "Packages", "`type`.wl"}]];
+        `func`["`config`", Today]
+    ],
+    `schedule`,
+    NotificationFunction -> `admin`
+]

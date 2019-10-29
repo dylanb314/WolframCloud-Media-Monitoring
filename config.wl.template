@@ -1,11 +1,12 @@
+$ProjectRoot = "monitoring/media";
 <|
     "cloud" -> "https://www.wolframcloud.com",
     "user" -> "user@example.com",
     "pass" -> "password",
     "token" -> "webhose.io-access-token",
-    "terms" -> {
-        "Mathematica"
-    },
+    "root" -> $ProjectRoot,
+    "path-template" -> StringJoin[{$ProjectRoot, "``/``/``.wdx"}],
+    "term" -> "Mathematica",
     "admins" -> {},
     "recipients" -> {}
 |>

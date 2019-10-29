@@ -14,7 +14,7 @@ GatherData[config_, start_DateObject] :=
         (* Import Data *)
         dataset = DataReading[token, term, start];
         (* Store Raw Data *)
-        CloudExport[FieldFilter[KeyFilter[dataset]], "WDX", path]
+        CloudExport[FieldFilter[KeyFilter[dataset]], "MX", path]
     ]
 GatherData[___] := $Failed
 
@@ -32,7 +32,7 @@ DataReading[token_, term_, start_DateObject] :=
             First[
                 StringCases[
                     response["ContentType"],
-                    ___~~" charset="~~e__:>e
+                    ___~~" charset="~~e__ :> ToUpperCase[e]
                 ]
             ]
         ];
