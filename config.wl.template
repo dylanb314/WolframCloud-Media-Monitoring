@@ -1,0 +1,11 @@
+<|
+    "cloud" -> "https://www.wolframcloud.com",
+    "user" -> "user@example.com",
+    "pass" -> "password",
+    "token" -> "webhose.io-access-token",
+    "terms" -> {
+        "Mathematica"
+    },
+    "admins" -> {},
+    "recipients" -> {}
+|>
