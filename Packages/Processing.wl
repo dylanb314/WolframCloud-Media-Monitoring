@@ -27,7 +27,6 @@ DataFormatting[raw_, term_] :=
         SortBy[finalData, #["Timestamp"]&]
     ]
 
-formattedValue["Title"][entry_, _] := Rule["Title", Replace[entry["thread"]["title"], "" -> None]]
 formattedValue["Timestamp"][entry_, _] :=
     Rule[
         "Timestamp",

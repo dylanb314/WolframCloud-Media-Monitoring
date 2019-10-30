@@ -11,7 +11,7 @@ GenerateTimeSeries[configFile_, date_DateObject] :=
         config= Get[configFile];
         term = Lookup[config, "term"];
         data = GetData[StringTemplate[Lookup[config, "path-template"]][term, "final", DateString[date, {"Year","-","Month","-","Day"}]]];
-        Print[data];
+
         formatted = data[All, "Timestamp"];
 
         DateHistogram[
