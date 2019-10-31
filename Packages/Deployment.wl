@@ -32,7 +32,10 @@ DeployPipeline[configFile_] :=
             Return[$Failed]
         ];
 
-        (* DeployDashboard[] *)
+        result = Append[result, DeployDashboard[configData, cloudConfig]];
+        If[TrueQ[MemberQ[result, _?FailureQ]],
+            Return[$Failed]
+        ];
 
         result
     ]
@@ -120,7 +123,7 @@ DeployImageTask[root_, type_, admin_, term_, cloudConfig_] :=
             "schedule" -> ToString[findGraphicsSched[type]],
             "admin" -> admin,
             "config" -> cloudConfig,
-            "dest" -> URLBuild[{root, term, "Images", type<>".png"}]
+            "dest" -> URLBuild[{root, term, "Images", type, DateString[{"Year","-","Month","-","Day"}]}]
         |>;
         dest = URLBuild[{root, term, "Tasks", type<>".task"}];
         DeployTask[template, assoc, dest]
@@ -133,6 +136,17 @@ findGraphicsFunc["WordCloud"] := "Monitoring`GenerateWordCloud";
 
 findGraphicsSched[_] := DateObject[{_, _, _, 3}]
 
+DeployDashboard[config_, cloudConfig_] :=
+    Module[{root = config["root"], term = config["term"], template, strExpr, expr},
+        template = Import[FileNameJoin[{$CurrentDirectory, "Dashboards", "delayed.template"}], "String"];
+        strExpr = StringTemplate[template][<|"root"->root, "term"->term|>];
+        expr = ToExpression[strExpr];
+        CloudDeploy[
+            expr,
+            URLBuild[{root, term, "Dashboard"}],
+            Permissions -> "Public"
+        ]
+    ]
 
 End[];
 

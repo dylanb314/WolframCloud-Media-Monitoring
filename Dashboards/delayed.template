@@ -1,0 +1,12 @@
+Delayed[
+    Column[
+        Map[
+            CloudImport[
+                URLBuild[{"`root`/`term`/Images", #, DateString[{"Year", "-", "Month", "-", "Day"}]}]
+            ] &,
+            {"TimeSeries", "Geographic", "Histogram", "WordCloud"}
+        ]
+    ],
+    "CloudCDF",
+    CachePersistence -> Quantity[1, "Hours"]
+]
