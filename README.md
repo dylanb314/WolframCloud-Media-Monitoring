@@ -18,7 +18,7 @@ Get["{repo-path}/Packages/Deployment.wl"];
 
 ConnectAccount[]
 
-DeployMediaMonitoringSystem[]
+DeployPipeline[]
 ```
 
 ## Webhose
