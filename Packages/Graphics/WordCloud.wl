@@ -16,7 +16,7 @@ GenerateWordCloud[configFile_, date_DateObject] :=
 
         WordCloud[
             formatted,
-            ColorFunction -> StyleSetting["ColorProfile"],
+            ColorFunction -> (Blend[{Black, Orange}, #]&),(*StyleSetting["ColorProfile"],*)
             ImageSize -> StyleSetting["ImageSize"]
         ]
     ]

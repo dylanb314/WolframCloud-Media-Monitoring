@@ -11,7 +11,6 @@ GenerateTimeSeries[configFile_, date_DateObject] :=
         config= Get[configFile];
         term = Lookup[config, "term"];
         data = GetData[StringTemplate[Lookup[config, "path-template"]][term, "final", DateString[date, {"Year","-","Month","-","Day"}]]];
-
         formatted = data[All, "Timestamp"];
 
         DateHistogram[
@@ -23,7 +22,7 @@ GenerateTimeSeries[configFile_, date_DateObject] :=
             ChartStyle -> Directive[
                 Opacity[0.75],
                 EdgeForm[Directive[Opacity[0], Thickness[0]]],
-                ColorData[StyleSetting["ColorProfile"]][0]
+                ColorData[StyleSetting["ColorProfile"]][0.9]
             ],
             ImageSize -> StyleSetting["ImageSize"],
             PlotLabel -> Style[
@@ -40,7 +39,7 @@ formatRange[date_] :=
     Append[
         Map[
             DateObject[#, TimeObject[{0, 0, 0}]]&,
-            {date-Quantity[1, "Days"], date}
+            {date, date+Quantity[1, "Days"]}
         ],
         Quantity[1, "Hours"]
     ]

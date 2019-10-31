@@ -20,7 +20,7 @@ GenerateHistogram[configFile_, date_DateObject] :=
         Labeled[
             Graphics[{
                 EdgeForm[White],
-                ColorData[StyleSetting["ColorProfile"]][0],
+                ColorData[StyleSetting["ColorProfile"]][0.9],
                 MapThread[
                     Tooltip[
                         Rectangle @@ #1,

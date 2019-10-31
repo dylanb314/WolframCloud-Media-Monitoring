@@ -16,7 +16,7 @@ GenerateMap[configFile_, date_DateObject] :=
 
         GeoBubbleChart[
             Total /@ formatted,
-            ChartStyle -> Directive[Opacity[1], ColorData[StyleSetting["ColorProfile"]][0]],
+            ChartStyle -> Directive[Opacity[1], ColorData[StyleSetting["ColorProfile"]][0.9]],
             GeoBackground -> StyleSetting["GeoBackground"],
             GeoProjection -> StyleSetting["GeoProjection"],
             GeoRange -> "World",
