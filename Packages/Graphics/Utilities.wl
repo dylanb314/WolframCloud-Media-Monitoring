@@ -6,7 +6,7 @@ StyleSetting;
 Begin["`Private`"];
 
 GetData[file_] /; $CloudEvaluation := Import[file, "MX"]
-GetData[file_] := CloudImport[file]
+GetData[file_] := CloudImport[file, "MX"]
 
 StyleSetting["AspectRation"] = 1/4;
 StyleSetting["ColorProfile"] = "Rainbow";

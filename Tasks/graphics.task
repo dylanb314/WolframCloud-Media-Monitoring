@@ -2,8 +2,7 @@ ScheduledTask[
     Module[{chart},
         Get[FileNameJoin[{"`root`", "Packages", "Graphics", "`type`.wl"}]];
         chart = `func`["`config`", Today];
-        If[Head[chart] =!= Graphcis, Return[$Failed]];
-        CloudExport[chart, "PNG", "`dest`"]
+        CloudExport[chart, "Expression", "`dest`"]
     ],
     `schedule`,
     NotificationFunction -> `admin`

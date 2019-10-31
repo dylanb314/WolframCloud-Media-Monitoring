@@ -10,7 +10,7 @@ ProcessData[config_, date_DateObject] :=
         term = Lookup[configData, "term"];
         raw = StringTemplate[Lookup[configData, "path-template"]][term, "raw", DateString[date, {"Year","-","Month","-","Day"}]];
         final = StringTemplate[Lookup[configData, "path-template"]][term, "final", DateString[date, {"Year","-","Month","-","Day"}]];
-        rawData = CloudImport[raw];
+        rawData = CloudImport[raw, "MX"];
         sorted = DataFormatting[rawData, term];
         CloudExport[sorted, "MX", final]
     ]
@@ -87,7 +87,8 @@ formattedValue["Scores"][entry_, term_] :=
                             Map[
                                 Classify["Sentiment", #, "Probabilities"] &,
                                 Select[
-                                    TextSentences[entry["text"]],
+                                    StringSplit[entry["text"], PunctuationCharacter],
+                                    (* TextSentences[entry["text"]], *)
                                     StringContainsQ[
                                         WordBoundary ~~ ToLowerCase[term] ~~ WordBoundary,
                                         IgnoreCase -> True
